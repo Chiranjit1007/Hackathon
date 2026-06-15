@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>ÉLAN CAFÉ | Artisan Coffee & Premium Lounge</title>
+    <!-- Google Fonts & Font Awesome 6 (Premium Icons) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #0A0908;
+            color: #EAE7E1;
+            font-family: 'Inter', sans-serif;
+            line-height: 1.5;
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #1C1B18;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #C5A059;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #D9B16E;
+        }
+
+        /* Typography */
+        h1, h2, h3, .logo, .hero-title, .section-heading {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 500;
+            letter-spacing: -0.02em;
+        }
+
+        .section-heading {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-align: center;
+            color: #F3E9D2;
+            position: relative;
+            display: inline-block;
+            width: 100%;
+        }
+
+        .section-heading span {
+            background: linear-gradient(135deg, #E4C486, #C5A059);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+
+        .gold-accent {
+            color: #C9A45B;
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            padding: 0.9rem 2rem;
+            background: transparent;
+            border: 1px solid #C9A45B;
+            color: #F3E9D2;
+            font-weight: 500;
+            border-radius: 40px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            font-size: 0.95rem;
+            letter-spacing: 1px;
+            backdrop-filter: blur(4px);
+        }
+        .btn-primary {
+            background: #C9A45B;
+            border: 1px solid #C9A45B;
+            color: #0A0908;
+            font-weight: 600;
+            box-shadow: 0 8px 20px rgba(201, 164, 91, 0.2);
+        }
+        .btn-primary:hover {
+            background: #B58F4A;
+            border-color: #B58F4A;
+            transform: translateY(-3px);
+            box-shadow: 0 15px 25px -8px rgba(201, 164, 91, 0.4);
+        }
+        .btn-outline:hover {
+            background: rgba(201, 164, 91, 0.1);
+            transform: translateY(-2px);
+            border-color: #D9B26A;
+        }
+
+        /* Header & Navigation */
+        .header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(14px);
+            background: rgba(10, 9, 8, 0.75);
+            border-bottom: 1px solid rgba(201, 164, 91, 0.3);
+            transition: all 0.2s;
+        }
+        .navbar {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.2rem 2rem;
+        }
+        .logo {
+            font-size: 2rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            background: linear-gradient(135deg, #F3E9D2, #C9A45B);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            text-decoration: none;
+        }
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+        .nav-links a {
+            text-decoration: none;
+            color: #EAE7E1;
+            font-weight: 500;
+            font-size: 1rem;
+            transition: 0.2s;
+            letter-spacing: 0.5px;
+        }
+        .nav-links a:hover, .nav-links a.active {
+            color: #C9A45B;
+        }
+        .menu-icon {
+            font-size: 1.8rem;
+            cursor: pointer;
+            display: none;
+            color: #C9A45B;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 90vh;
+            background: linear-gradient(107deg, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.4) 100%), url('https://images.unsplash.com/photo-1495474472227-4a3d7b916a10?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80') no-repeat center center/cover;
+            background-attachment: fixed;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            justify-content: center;
+            position: relative;
+        }
+        .hero-content {
+            max-width: 800px;
+            padding: 2rem;
+            animation: fadeUp 1s ease-out;
+        }
+        .hero-title {
+            font-size: 4.5rem;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 12px rgba(0,0,0,0.4);
+        }
+        .hero-tagline {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            color: #EADBB6;
+            font-weight: 300;
+        }
+        .hero-buttons {
+            display: flex;
+            gap: 1.2rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        /* Sections general */
+        .container {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 5rem 2rem;
+        }
+        .section {
+            border-bottom: 1px solid rgba(201, 164, 91, 0.15);
+        }
+
+        /* Menu Grid */
+        .menu-grid, .pastry-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2.5rem;
+            margin-top: 3rem;
+        }
+        .menu-card {
+            background: #141210;
+            border-radius: 24px;
+            padding: 1.8rem;
+            transition: all 0.35s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+            border: 1px solid rgba(201, 164, 91, 0.2);
+            backdrop-filter: blur(2px);
+            text-align: center;
+        }
+        .menu-card:hover {
+            transform: translateY(-10px);
+            border-color: #C9A45B;
+            box-shadow: 0 20px 35px -12px rgba(0,0,0,0.6);
+            background: #191715;
+        }
+        .menu-icon {
+            font-size: 3rem;
+            color: #C9A45B;
+            margin-bottom: 1.2rem;
+        }
+        .menu-title {
+            font-size: 1.7rem;
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        .menu-desc {
+            font-size: 0.9rem;
+            color: #BCB6A8;
+            margin: 0.7rem 0;
+        }
+        .price {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: #E4C486;
+            margin-top: 0.8rem;
+        }
+
+        /* About */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+        .about-text p {
+            margin-bottom: 1.2rem;
+            color: #D1CBB8;
+            font-size: 1.05rem;
+        }
+        .about-img img {
+            width: 100%;
+            border-radius: 28px;
+            box-shadow: 0 25px 35px -12px rgba(0,0,0,0.5);
+            object-fit: cover;
+            height: auto;
+            border: 1px solid rgba(201,164,91,0.3);
+            transition: transform 0.5s;
+        }
+        .about-img img:hover {
+            transform: scale(1.01);
+        }
+        .signature-quote {
+            font-style: italic;
+            border-left: 3px solid #C9A45B;
+            padding-left: 1.5rem;
+            margin-top: 1.5rem;
+            font-weight: 300;
+        }
+
+        /* Gallery Grid */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        .gallery-item {
+            overflow: hidden;
+            border-radius: 24px;
+            aspect-ratio: 1 / 0.9;
+            position: relative;
+            cursor: pointer;
+        }
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease, filter 0.4s;
+        }
+        .gallery-item:hover img {
+            transform: scale(1.05);
+            filter: brightness(1.05);
+        }
+
+        /* Testimonials */
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        .testimonial-card {
+            background: #131110;
+            padding: 2rem;
+            border-radius: 32px;
+            border: 1px solid rgba(201,164,91,0.2);
+            transition: all 0.3s;
+        }
+        .testimonial-card i {
+            font-size: 2rem;
+            color: #C9A45B;
+            opacity: 0.7;
+            margin-bottom: 1rem;
+            display: block;
+        }
+        .testimonial-text {
+            font-size: 1rem;
+            line-height: 1.5;
+            margin-bottom: 1.5rem;
+        }
+        .customer-name {
+            font-weight: 600;
+            color: #E4C486;
+        }
+
+        /* Reservation + Contact */
+        .contact-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+        }
+        .form-group {
+            margin-bottom: 1.2rem;
+        }
+        input, textarea {
+            width: 100%;
+            padding: 1rem;
+            background: #1E1B18;
+            border: 1px solid #3C372F;
+            border-radius: 20px;
+            color: #F3E9D2;
+            font-family: 'Inter', sans-serif;
+            transition: 0.2s;
+        }
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: #C9A45B;
+            box-shadow: 0 0 0 2px rgba(201,164,91,0.3);
+        }
+        .info-card {
+            background: #131110;
+            padding: 1.8rem;
+            border-radius: 28px;
+            border-left: 4px solid #C9A45B;
+        }
+        .info-card p {
+            margin: 1rem 0;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        .info-card i {
+            width: 28px;
+            color: #C9A45B;
+            font-size: 1.3rem;
+        }
+        .map-container {
+            margin-top: 2rem;
+            border-radius: 28px;
+            overflow: hidden;
+            box-shadow: 0 12px 28px black;
+        }
+        iframe {
+            width: 100%;
+            height: 260px;
+            border: 0;
+        }
+
+        /* Footer */
+        .footer {
+            background: #070605;
+            padding: 3rem 2rem 2rem;
+            text-align: center;
+            border-top: 1px solid rgba(201,164,91,0.2);
+        }
+        .footer-social a {
+            color: #C9A45B;
+            font-size: 1.4rem;
+            margin: 0 0.8rem;
+            transition: 0.2s;
+            display: inline-block;
+        }
+        .footer-social a:hover {
+            transform: translateY(-4px);
+            color: #E4C486;
+        }
+        .copyright {
+            margin-top: 2rem;
+            font-size: 0.8rem;
+            color: #8B8475;
+        }
+
+        /* Animations */
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 860px) {
+            .navbar {
+                padding: 1rem 1.5rem;
+            }
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                left: -100%;
+                width: 80%;
+                height: calc(100vh - 70px);
+                background: #0E0D0B;
+                backdrop-filter: blur(20px);
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                gap: 2.5rem;
+                transition: left 0.4s ease-in-out;
+                box-shadow: 4px 0 20px rgba(0,0,0,0.6);
+                z-index: 999;
+                border-right: 1px solid #C9A45B;
+            }
+            .nav-links.active {
+                left: 0;
+            }
+            .menu-icon {
+                display: block;
+            }
+            .hero-title {
+                font-size: 2.8rem;
+            }
+            .about-grid, .contact-row {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            .container {
+                padding: 3rem 1.5rem;
+            }
+            .section-heading {
+                font-size: 2.5rem;
+            }
+        }
+
+        @media (max-width: 500px) {
+            .hero-title {
+                font-size: 2.3rem;
+            }
+            .btn {
+                padding: 0.7rem 1.4rem;
+                font-size: 0.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header class="header" id="header">
+    <div class="navbar">
+        <a href="#" class="logo">ÉLAN CAFÉ</a>
+        <div class="menu-icon" id="menuToggle">
+            <i class="fas fa-bars"></i>
+        </div>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#menu">Menu</a></li>
+            <li><a href="#about">Story</a></li>
+            <li><a href="#gallery">Gallery</a></li>
+            <li><a href="#contact">Reserve</a></li>
+        </ul>
+    </div>
+</header>
+
+<main>
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title">Where Elegance <br>Meets <span class="gold-accent">Aroma</span></h1>
+            <p class="hero-tagline">Artisan coffee, curated pastries & a timeless atmosphere. <br>Experience the pinnacle of cafe culture.</p>
+            <div class="hero-buttons">
+                <a href="#menu" class="btn btn-primary">Explore Menu</a>
+                <a href="#contact" class="btn btn-outline">Reserve Table <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Premium Menu Section -->
+    <section id="menu" class="section">
+        <div class="container">
+            <h2 class="section-heading">Our <span>Signature</span> Brews</h2>
+            <div class="menu-grid">
+                <div class="menu-card">
+                    <div class="menu-icon"><i class="fas fa-mug-hot"></i></div>
+                    <h3 class="menu-title">Single Origin Espresso</h3>
+                    <p class="menu-desc">Ethiopia Yirgacheffe · Notes of jasmine & bergamot</p>
+                    <div class="price">$4.5</div>
+                </div>
+                <div class="menu-card">
+                    <div class="menu-icon"><i class="fas fa-wind"></i></div>
+                    <h3 class="menu-title">Velvet Latte</h3>
+                    <p class="menu-desc">Double espresso + silky oat milk & honey dust</p>
+                    <div class="price">$6.2</div>
+                </div>
+                <div class="menu-card">
+                    <div class="menu-icon"><i class="fas fa-crown"></i></div>
+                    <h3 class="menu-title">Golden Turmeric Brew</h3>
+                    <p class="menu-desc">Golden milk, adaptogens, cinnamon & star anise</p>
+                    <div class="price">$5.9</div>
+                </div>
+                <div class="menu-card">
+                    <div class="menu-icon"><i class="fas fa-glass-cheers"></i></div>
+                    <h3 class="menu-title">Nitro Cold Brew</h3>
+                    <p class="menu-desc">Small-batch nitrogen infused, creamy finish</p>
+                    <div class="price">$5.5</div>
+                </div>
+            </div>
+
+            <h2 class="section-heading" style="margin-top: 4rem;">Artisan <span>Pastries</span></h2>
+            <div class="pastry-grid">
+                <div class="menu-card">
+                    <div class="menu-icon"><i class="fas fa-bread-slice"></i></div>
+                    <h3 class="menu-title">Saffron Croissant</h3>
+                    <p class="menu-desc">Flaky layers, saffron & cardamom glaze</p>
+                    <div class="price">$5.2</div>
+                </div>
+                <div class="menu-card">
+                    <div class="menu-icon"><i class="fas fa-cake-candles"></i></div>
+                    <h3 class="menu-title">Dark Chocolate Tarte</h3>
+                    <p class="menu-desc">Valrhona ganache, gold leaf flakes</p>
+                    <div class="price">$7.8</div>
+                </div>
+                <div class="menu-card">
+                    <div class="menu-icon"><i class="fas fa-seedling"></i></div>
+                    <h3 class="menu-title">Pistachio Financier</h3>
+                    <p class="menu-desc">Brown butter, crushed pistachio & rose</p>
+                    <div class="price">$4.9</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Story Section -->
+    <section id="about" class="section">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-text">
+                    <h2 class="section-heading" style="text-align: left;">The <span>Élan</span> Legacy</h2>
+                    <p>Founded in the spirit of timeless European cafés and modernist Japanese minimalism, Élan Café is more than a coffeehouse — it is a sanctuary for connoisseurs. Every bean is ethically sourced, slow-roasted in micro-batches, and brewed with precision.</p>
+                    <p>Our space is designed to inspire: deep walnut wood, ambient lighting, and handcrafted ceramics. Each pastry is born from the collaboration of award-winning pâtissiers. At Élan, we celebrate the ritual of unhurried excellence.</p>
+                    <div class="signature-quote">
+                        "Coffee in a gold-rimmed cup, silence that speaks volumes."
+                    </div>
+                </div>
+                <div class="about-img">
+                    <img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?ixlib=rb-4.0.3&auto=format&fit=crop&w=987&q=80" alt="Elegant cafe interior" loading="lazy">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section Premium -->
+    <section id="gallery" class="section">
+        <div class="container">
+            <h2 class="section-heading">Visual <span>Elegance</span></h2>
+            <div class="gallery-grid">
+                <div class="gallery-item"><img src="https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="coffee art" loading="lazy"></div>
+                <div class="gallery-item"><img src="https://images.unsplash.com/photo-1495474472227-4a3d7b916a10?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="coffee pouring" loading="lazy"></div>
+                <div class="gallery-item"><img src="https://images.unsplash.com/photo-1600093463592-8e36ae95ef56?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="pastry selection" loading="lazy"></div>
+                <div class="gallery-item"><img src="https://images.unsplash.com/photo-1442512595331-e89e73853f31?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="cafe interior luxury" loading="lazy"></div>
+                <div class="gallery-item"><img src="https://images.unsplash.com/photo-1461023058943-07fcbe16d735?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="latte art" loading="lazy"></div>
+                <div class="gallery-item"><img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="espresso machine" loading="lazy"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-heading">Connoisseur <span>Words</span></h2>
+            <div class="testimonial-grid">
+                <div class="testimonial-card">
+                    <i class="fas fa-quote-left"></i>
+                    <p class="testimonial-text">"The most refined coffee experience in the city. Attention to detail, from the ceramic cups to the single-origin notes — absolute heaven."</p>
+                    <p class="customer-name">— Victoria L., Food & Wine Critic</p>
+                </div>
+                <div class="testimonial-card">
+                    <i class="fas fa-quote-left"></i>
+                    <p class="testimonial-text">"Élan feels like a second home. Their saffron croissant paired with a flat white is a masterpiece. Flawless ambiance."</p>
+                    <p class="customer-name">— James K., Entrepreneur</p>
+                </div>
+                <div class="testimonial-card">
+                    <i class="fas fa-quote-left"></i>
+                    <p class="testimonial-text">"A truly premium retreat. The staff is impeccable, and the nitro brew rivals any world-class roastery."</p>
+                    <p class="customer-name">— Elena R., Lifestyle Editor</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact & Reservation -->
+    <section id="contact" class="section">
+        <div class="container">
+            <h2 class="section-heading">Reserve <span>Your Moment</span></h2>
+            <div class="contact-row">
+                <div>
+                    <form id="reserveForm" action="#" method="post">
+                        <div class="form-group">
+                            <input type="text" placeholder="Full Name" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" placeholder="Email Address" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="tel" placeholder="Phone Number">
+                        </div>
+                        <div class="form-group">
+                            <textarea rows="3" placeholder="Special requests / guest count & time"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary" style="width:100%">Request Reservation <i class="fas fa-calendar-alt"></i></button>
+                        <p style="font-size: 0.7rem; margin-top: 0.8rem; opacity:0.7;">*We'll confirm within 2 hours</p>
+                    </form>
+                </div>
+                <div class="info-card">
+                    <p><i class="fas fa-map-marker-alt"></i> 42 Monmouth Street, Covent Garden, London WC2H 9EP</p>
+                    <p><i class="fas fa-clock"></i> Mon - Fri: 8:00 – 22:00 / Sat - Sun: 9:00 – 23:00</p>
+                    <p><i class="fas fa-phone-alt"></i> +44 (0)20 7946 0138</p>
+                    <p><i class="fas fa-envelope"></i> hello@elancafe.com</p>
+                    <div class="map-container">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2483.098292878926!2d-0.12564768422971444!3d51.51404227963626!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x487604ceb0b7bdb5%3A0x7d87f0e70e6f8a0!2sCovent%20Garden!5e0!3m2!1sen!2suk!4v1677688888888!5m2!1sen!2suk" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer class="footer">
+    <div class="footer-social">
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+        <a href="#"><i class="fab fa-pinterest-p"></i></a>
+    </div>
+    <div class="copyright">
+        <p>© 2026 ÉLAN CAFÉ — Timeless Excellence. Crafted with devotion.</p>
+        <p style="margin-top: 0.5rem;">All trademarks and visuals are property of their respective owners.</p>
+    </div>
+</footer>
+
+<script>
+    // Mobile menu toggle
+    const menuToggle = document.getElementById('menuToggle');
+    const navLinks = document.getElementById('navLinks');
+    menuToggle.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+        // change icon
+        const icon = menuToggle.querySelector('i');
+        if (navLinks.classList.contains('active')) {
+            icon.classList.remove('fa-bars');
+            icon.classList.add('fa-times');
+        } else {
+            icon.classList.remove('fa-times');
+            icon.classList.add('fa-bars');
+        }
+    });
+
+    // close menu on link click (smooth)
+    document.querySelectorAll('.nav-links a').forEach(link => {
+        link.addEventListener('click', () => {
+            navLinks.classList.remove('active');
+            const icon = menuToggle.querySelector('i');
+            icon.classList.remove('fa-times');
+            icon.classList.add('fa-bars');
+        });
+    });
+
+    // Smooth scroll for all anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('href');
+            if (targetId === '#') return;
+            const targetElement = document.querySelector(targetId);
+            if (targetElement) {
+                const offset = 70;
+                const elementPosition = targetElement.getBoundingClientRect().top + window.pageYOffset;
+                window.scrollTo({
+                    top: elementPosition - offset,
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
+
+    // Simple form alert (premium demo)
+    const form = document.getElementById('reserveForm');
+    if (form) {
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('✨ Thank you for your reservation request. Our host will reach out shortly to confirm your premium experience at ÉLAN.');
+            form.reset();
+        });
+    }
+
+    // active nav highlight on scroll with intersection observer
+    const sections = document.querySelectorAll('section[id]');
+    const navItems = document.querySelectorAll('.nav-links a');
+    window.addEventListener('scroll', () => {
+        let current = '';
+        const scrollPos = window.scrollY + 120;
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop;
+            const sectionHeight = section.offsetHeight;
+            if (scrollPos >= sectionTop && scrollPos < sectionTop + sectionHeight) {
+                current = section.getAttribute('id');
+            }
+        });
+        navItems.forEach(link => {
+            link.classList.remove('active');
+            const href = link.getAttribute('href').substring(1);
+            if (href === current) {
+                link.classList.add('active');
+            }
+        });
+    });
+</script>
+</body>
+</html>
